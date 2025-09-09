@@ -1,0 +1,8 @@
+
+
+.geoapify-autocomplete-input {
+  border-width: 2px !important;   /* make border thicker */
+  border-color: #060606 !important; /* Tailwind blue-600 */
+  border-radius: 10px !important;   /* optional: rounded edges */
+  padding: 10px !important;         /* extra spacing inside */
+}
