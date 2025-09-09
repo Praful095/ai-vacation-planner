@@ -35,21 +35,34 @@ function MyTrips() {
   };
 
   return (
-    <div className='flex justify-center  flex-col items-center'>
-      <h1 className='text-2xl font-bold  my-5 text-purple-600'>
-        My   All Vacations Plans 🌴🧳
+    <div className='flex justify-center flex-col items-center px-4 sm:px-6 md:px-8 lg:px-16'>
+      <h1 className='text-2xl sm:text-xl md:text-2xl lg:text-3xl font-bold my-5 text-purple-600 text-center'>
+        My All Vacations Plans 🌴🧳
       </h1>
 
-      <div className='grid items-center justify-center grid-cols-3 gap-20 p-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  '>
-          {userTrips?.length>0?userTrips.map((trip, index) => (
-          <div key={trip.id || index} className=' border-2 border-purple-200 shadow-2xl rounded-lg  hover:scale-105 transition-all p-4 cursor-pointer h-90'onClick={() => navigate(`/view-trip/${trip.id}`)}>
-            
-            <UserTripCard trip={trip} />
-            <h1 className='text-xl text-purple-500 font-semibold my-3'>🌍 Destination :{trip?.userSelection?.destination}</h1>
-            <h1 className='text-md font-medium my-2'> 🗓️ days :{trip?.userSelection?.days}</h1>
-             <h1 className='text-md font-medium my-2'>  ❤️ company with :{trip?.userSelection?.travelWith}</h1>
-          </div>
-        )):<Skeleton className="h-[20px] w-[100px] rounded-full" />}
+      <div className='grid gap-6 sm:gap-4 md:gap-6 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full'>
+        {userTrips?.length > 0 ? (
+          userTrips.map((trip, index) => (
+            <div
+              key={trip.id || index}
+              className='border-2 border-purple-200 shadow-2xl rounded-lg hover:scale-105 transition-all p-4 cursor-pointer flex flex-col'
+              onClick={() => navigate(`/view-trip/${trip.id}`)}
+            >
+              <UserTripCard trip={trip} />
+              <h1 className='text-lg sm:text-base md:text-lg lg:text-xl text-purple-500 font-semibold my-2 mt-3'>
+                🌍 Destination: {trip?.userSelection?.destination}
+              </h1>
+              <h1 className='text-md sm:text-sm md:text-md my-1'>
+                🗓️ Days: {trip?.userSelection?.days}
+              </h1>
+              <h1 className='text-md sm:text-sm md:text-md my-1'>
+                ❤️ Company with: {trip?.userSelection?.travelWith}
+              </h1>
+            </div>
+          ))
+        ) : (
+          <Skeleton className="h-[20px] w-[100px] rounded-full" />
+        )}
       </div>
 
       {/* Debugging only */}
@@ -58,4 +71,4 @@ function MyTrips() {
   );
 }
 
-export default MyTrips
+export default MyTrips;
